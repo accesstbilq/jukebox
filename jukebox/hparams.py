@@ -208,7 +208,7 @@ small_vqvae = Hyperparams(
 HPARAMS_REGISTRY["small_vqvae"] = small_vqvae
 
 custom_vqvae = Hyperparams(
-    restore_vqvae="https://genxx.s3.us-east-1.amazonaws.com/small_vqvae/checkpoint_step_200001.pth.tar",
+    restore_vqvae="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_vqvae_checkpoint.pth.tar",
 )
 custom_vqvae.update(small_vqvae)
 HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
@@ -227,11 +227,9 @@ small_prior = Hyperparams(
 HPARAMS_REGISTRY["small_prior"] = small_prior
 
 custom_prior = Hyperparams(
-    restore_prior="https://genxx.s3.us-east-1.amazonaws.com/small_prior/checkpoint_latest.pth.tar",
+    restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
     level=2,
     labels=False,
-    alignment_layer=None,
-    alignment_head=None,
 )
 custom_prior.update(small_prior)
 HPARAMS_REGISTRY["custom_prior"] = custom_prior
@@ -326,7 +324,7 @@ HPARAMS_REGISTRY["small_upsampler"] = small_upsampler
 
 
 custom_upsampler = Hyperparams(
-    restore_prior="https://genxx.s3.us-east-1.amazonaws.com/small_upsampler/checkpoint_latest.pth.tar",
+    restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_upsampler_checkpoint.pth.tar",
     level=0,
     labels=False,
 )
