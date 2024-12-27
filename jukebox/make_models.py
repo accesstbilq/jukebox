@@ -14,12 +14,20 @@ from jukebox.utils.dist_utils import print_all
 from jukebox.vqvae.vqvae import calculate_strides
 import fire
 
+# MODELS = {
+#     '5b': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b"),
+#     '5b_lyrics': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b_lyrics"),
+#     '1b_lyrics': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_1b_lyrics"),
+#     #'your_model': ("you_vqvae_here", "your_upsampler_here", ..., "you_top_level_prior_here")
+# }
+
 MODELS = {
     '5b': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b"),
     '5b_lyrics': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b_lyrics"),
     '1b_lyrics': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_1b_lyrics"),
-    #'your_model': ("you_vqvae_here", "your_upsampler_here", ..., "you_top_level_prior_here")
+    'custom_model': ("custom_vqvae", "custom_upsampler", "custom_prior"),
 }
+
 
 def load_checkpoint(path):
     restore = path
