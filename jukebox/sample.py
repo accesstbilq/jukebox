@@ -140,11 +140,24 @@ def upsample(zs, labels, sampling_kwargs, priors, hps):
     return zs
 
 # Prompt the model with raw audio input (dimension: NTC) and generate continuations
+# def primed_sample(x, labels, sampling_kwargs, priors, hps):
+#     sample_levels = list(range(len(priors)))
+#     zs = priors[-1].encode(x, start_level=0, end_level=len(priors), bs_chunks=x.shape[0])
+#     zs = _sample(zs, labels, sampling_kwargs, priors, sample_levels, hps)
+#     return zs
 def primed_sample(x, labels, sampling_kwargs, priors, hps):
+    # Dynamically determine sample levels based on priors
     sample_levels = list(range(len(priors)))
+
+    # Debug information
+    print(f"Sample levels: {sample_levels}")
+    print(f"Number of priors: {len(priors)}")
+
+    # Encode and sample
     zs = priors[-1].encode(x, start_level=0, end_level=len(priors), bs_chunks=x.shape[0])
     zs = _sample(zs, labels, sampling_kwargs, priors, sample_levels, hps)
     return zs
+
 
 # Load `duration` seconds of the given audio files to use as prompts
 def load_prompts(audio_files, duration, hps):
