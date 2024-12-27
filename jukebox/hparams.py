@@ -207,6 +207,13 @@ small_vqvae = Hyperparams(
 )
 HPARAMS_REGISTRY["small_vqvae"] = small_vqvae
 
+custom_vqvae = Hyperparams(
+    restore_vqvae="https://genxx.s3.us-east-1.amazonaws.com/small_vqvae/checkpoint_step_200001.pth.tar",
+)
+custom_vqvae.update(small_vqvae)
+HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
+
+
 small_prior = Hyperparams(
     n_ctx=8192,
     prior_width=1024,
@@ -219,6 +226,18 @@ small_prior = Hyperparams(
 )
 HPARAMS_REGISTRY["small_prior"] = small_prior
 
+custom_prior = Hyperparams(
+    restore_prior="https://genxx.s3.us-east-1.amazonaws.com/small_prior/checkpoint_latest.pth.tar",
+    level=2,
+    labels=False,
+    alignment_layer=None,
+    alignment_head=None,
+)
+custom_prior.update(small_prior)
+HPARAMS_REGISTRY["custom_prior"] = custom_prior
+
+
+
 small_labelled_prior = Hyperparams(
     labels=True,
     labels_v3=True,
@@ -230,6 +249,8 @@ small_labelled_prior = Hyperparams(
 )
 small_labelled_prior.update(small_prior)
 HPARAMS_REGISTRY["small_labelled_prior"] = small_labelled_prior
+
+
 
 small_single_enc_dec_prior = Hyperparams(
     n_ctx=6144,
@@ -302,6 +323,15 @@ small_upsampler = Hyperparams(
 )
 
 HPARAMS_REGISTRY["small_upsampler"] = small_upsampler
+
+
+custom_upsampler = Hyperparams(
+    restore_prior="https://genxx.s3.us-east-1.amazonaws.com/small_upsampler/checkpoint_latest.pth.tar",
+    level=0,
+    labels=False,
+)
+custom_upsampler.update(small_upsampler)
+HPARAMS_REGISTRY["custom_upsampler"] = custom_upsampler
 
 all_fp16 = Hyperparams(
     fp16=True,
