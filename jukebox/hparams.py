@@ -246,7 +246,7 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 # HPARAMS_REGISTRY["custom_prior"] = custom_prior
 
 custom_top_prior = Hyperparams(
-    restore_prior="https://openaipublic.azureedge.net/jukebox/models/5b/prior_level_2.pth.tar",  # Default top-level prior
+    restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",  # Default top-level prior
     level=2,  # Top level
     labels=False,
 )
