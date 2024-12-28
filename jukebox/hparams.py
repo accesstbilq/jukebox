@@ -229,9 +229,17 @@ small_prior = Hyperparams(
 )
 HPARAMS_REGISTRY["small_prior"] = small_prior
 
+# custom_prior = Hyperparams(
+#     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
+#     level=1,  # Match the number of levels in the VQ-VAE model
+#     labels=False,
+# )
+# custom_prior.update(small_prior)
+# HPARAMS_REGISTRY["custom_prior"] = custom_prior
+
 custom_prior = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
-    level=1,  # Match the number of levels in the VQ-VAE model
+    level=2,  # Top-level prior
     labels=False,
 )
 custom_prior.update(small_prior)
