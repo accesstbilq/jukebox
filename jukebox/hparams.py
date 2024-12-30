@@ -247,7 +247,7 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 
 custom_top_prior = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",  # Default top-level prior
-    level=2,  # Top level
+    level=1,  # Top level
     labels=False,
 )
 custom_top_prior.update(small_prior)
