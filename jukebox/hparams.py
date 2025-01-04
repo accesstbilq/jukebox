@@ -612,3 +612,97 @@ DEFAULTS["audio"] = Hyperparams(
 DEFAULTS["distributed"] = Hyperparams(
     bucket=128
 )
+
+
+REMOTE_PREFIX = "https://genxx.s3.us-east-1.amazonaws.com/"
+
+# Custom VQ-VAE Model
+custom_vqvae = Hyperparams(
+    levels=3,
+    downs_t=(3, 2, 2),
+    strides_t=(2, 2, 2),
+    emb_width=64,
+    l_bins=2048,
+    l_mu=0.99,
+    commit=0.02,
+    spectral=0.0,
+    multispectral=1.0,
+    loss_fn="lmix",
+    lmix_l2=1.0,
+    lmix_linf=0.02,
+    width=32,
+    depth=4,
+    m_conv=1.0,
+    dilation_growth_rate=3,
+    restore_vqvae= "/content/gdrive/MyDrive/Jukebox_Checkpoints/vqvae.pth.tar",
+)
+HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
+
+# Custom Upsampler Level 0
+custom_upsampler_level_0 = Hyperparams(
+    level=0,
+    n_ctx=8192,
+    prior_width=1920,
+    prior_depth=72,
+    heads=1,
+    attn_order=2,
+    blocks=128,
+    init_scale=0.4,
+    c_res=1,
+    cond_width=1024,
+    cond_depth=16,
+    cond_dilation_growth_rate=3,
+    cond_dilation_cycle=8,
+    cond_c_res=1,
+    use_tokens=False,
+    prime_loss_fraction=0.0,
+    fp16_params=False,
+    restore_prior= "/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_0.pth.tar",
+)
+HPARAMS_REGISTRY["custom_upsampler_level_0"] = custom_upsampler_level_0
+
+# Custom Upsampler Level 1
+custom_upsampler_level_1 = Hyperparams(
+    level=1,
+    n_ctx=8192,
+    prior_width=1920,
+    prior_depth=72,
+    heads=1,
+    attn_order=2,
+    blocks=128,
+    init_scale=0.4,
+    c_res=1,
+    cond_width=1024,
+    cond_depth=16,
+    cond_dilation_growth_rate=3,
+    cond_dilation_cycle=8,
+    cond_c_res=1,
+    use_tokens=False,
+    prime_loss_fraction=0.0,
+    fp16_params=False,
+    restore_prior= "/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_1.pth.tar",
+)
+HPARAMS_REGISTRY["custom_upsampler_level_1"] = custom_upsampler_level_1
+
+# Custom Prior (Top-Level Prior)
+custom_prior = Hyperparams(
+    level=2,
+    n_ctx=8192,
+    prior_width=4800,
+    prior_depth=72,
+    heads=8,
+    attn_order=2,
+    blocks=128,
+    init_scale=0.1,
+    c_res=1,
+    beta2=0.925,
+    min_duration=60.0,
+    max_duration=600.0,
+    use_tokens=False,
+    n_tokens=0,
+    prime_loss_fraction=0.0,
+    merged_decoder=True,
+    restore_prior= "/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_2.pth.tar",
+    fp16_params=True,
+)
+HPARAMS_REGISTRY["custom_prior"] = custom_prior
