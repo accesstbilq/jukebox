@@ -21,13 +21,18 @@ import fire
 #     #'your_model': ("you_vqvae_here", "your_upsampler_here", ..., "you_top_level_prior_here")
 # }
 
+# MODELS = {
+#     '5b': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b"),
+#     '5b_lyrics': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b_lyrics"),
+#     '1b_lyrics': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_1b_lyrics"),
+#     'custom_model': ("custom_vqvae", "custom_upsampler", "custom_prior"),
+# }
 MODELS = {
-    '5b': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b"),
-    '5b_lyrics': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b_lyrics"),
-    '1b_lyrics': ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_1b_lyrics"),
-    'custom_model': ("custom_vqvae", "custom_upsampler", "custom_prior"),
+    "5b": ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b"),
+    "5b_lyrics": ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_5b_lyrics"),
+    "1b_lyrics": ("vqvae", "upsampler_level_0", "upsampler_level_1", "prior_1b_lyrics"),
+    "custom_model": ("custom_vqvae", "custom_upsampler_level_0", "custom_upsampler_level_1", "custom_prior"),
 }
-
 
 def load_checkpoint(path):
     restore = path
