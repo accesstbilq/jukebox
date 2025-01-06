@@ -617,26 +617,47 @@ DEFAULTS["distributed"] = Hyperparams(
 REMOTE_PREFIX = "https://genxx.s3.us-east-1.amazonaws.com/"
 
 # Custom VQ-VAE Model
+# custom_vqvae = Hyperparams(
+#     levels=3,
+#     downs_t=(3, 2, 2),
+#     strides_t=(2, 2, 2),
+#     emb_width=64,
+#     l_bins=2048,
+#     l_mu=0.99,
+#     commit=0.02,
+#     spectral=0.0,
+#     multispectral=1.0,
+#     loss_fn="lmix",
+#     lmix_l2=1.0,
+#     lmix_linf=0.02,
+#     width=32,
+#     depth=4,
+#     m_conv=1.0,
+#     dilation_growth_rate=3,
+#     restore_vqvae= "/content/gdrive/MyDrive/Jukebox_Checkpoints/vqvae.pth.tar",
+# )
+# HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
+
 custom_vqvae = Hyperparams(
-    levels=3,
-    downs_t=(3, 2, 2),
-    strides_t=(2, 2, 2),
-    emb_width=64,
+    levels=3,  # Match checkpoint
+    downs_t=(3, 2, 2),  # Match checkpoint
+    strides_t=(2, 2, 2),  # Match checkpoint
+    emb_width=64,  # Match checkpoint
     l_bins=2048,
     l_mu=0.99,
     commit=0.02,
     spectral=0.0,
     multispectral=1.0,
-    loss_fn="lmix",
-    lmix_l2=1.0,
-    lmix_linf=0.02,
+    loss_fn="l1",  # Match checkpoint
     width=32,
     depth=4,
     m_conv=1.0,
     dilation_growth_rate=3,
-    restore_vqvae= "/content/gdrive/MyDrive/Jukebox_Checkpoints/vqvae.pth.tar",
+    restore_vqvae="/content/gdrive/MyDrive/Jukebox_Checkpoints/vqvae.pth.tar",
+    fp16=True,  # Match checkpoint
 )
 HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
+
 
 # Custom Upsampler Level 0
 custom_upsampler_level_0 = Hyperparams(
