@@ -209,12 +209,12 @@ HPARAMS_REGISTRY["small_vqvae"] = small_vqvae
 
 
 
-custom_vqvae = Hyperparams(
-    levels=2,  # Ensure this matches the trained model
-    restore_vqvae="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_vqvae_checkpoint.pth.tar",
-)
-custom_vqvae.update(small_vqvae)
-HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
+# custom_vqvae = Hyperparams(
+#     levels=2,  # Ensure this matches the trained model
+#     restore_vqvae="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_vqvae_checkpoint.pth.tar",
+# )
+# custom_vqvae.update(small_vqvae)
+# HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
 
 
 small_prior = Hyperparams(
