@@ -679,9 +679,32 @@ custom_vqvae = Hyperparams(
 HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
 
 
+# custom_upsampler_level_0 = Hyperparams(
+#     level=0,
+#     n_ctx=8192,
+#     prior_width=1920,
+#     prior_depth=72,
+#     heads=1,
+#     attn_order=2,
+#     blocks=128,
+#     init_scale=0.4,
+#     c_res=1,
+#     cond_width=1024,
+#     cond_depth=16,
+#     cond_dilation_growth_rate=3,
+#     cond_dilation_cycle=8,
+#     cond_c_res=1,
+#     use_tokens=False,
+#     prime_loss_fraction=0.0,
+#     fp16_params=False,
+#     restore_prior= "/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_0.pth.tar",
+# )
+# HPARAMS_REGISTRY["custom_upsampler_level_0"] = custom_upsampler_level_0
 # Custom Upsampler Level 0
 custom_upsampler_level_0 = Hyperparams(
     level=0,
+    y_bins=(10, 100),  # Set as a tuple (genres, artists)
+    t_bins=64,
     n_ctx=8192,
     prior_width=1920,
     prior_depth=72,
@@ -701,6 +724,32 @@ custom_upsampler_level_0 = Hyperparams(
     restore_prior= "/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_0.pth.tar",
 )
 HPARAMS_REGISTRY["custom_upsampler_level_0"] = custom_upsampler_level_0
+
+# Custom Prior (Top-Level Prior)
+custom_prior = Hyperparams(
+    level=2,
+    y_bins=(10, 100),  # Set as a tuple (genres, artists)
+    t_bins=64,
+    n_ctx=8192,
+    prior_width=4800,
+    prior_depth=72,
+    heads=8,
+    attn_order=2,
+    blocks=128,
+    init_scale=0.1,
+    c_res=1,
+    beta2=0.925,
+    min_duration=60.0,
+    max_duration=600.0,
+    use_tokens=False,
+    n_tokens=0,
+    prime_loss_fraction=0.0,
+    merged_decoder=True,
+    restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_2.pth.tar",
+    fp16_params=True,
+)
+HPARAMS_REGISTRY["custom_prior"] = custom_prior
+
 
 # Custom Upsampler Level 1
 custom_upsampler_level_1 = Hyperparams(
@@ -725,25 +774,25 @@ custom_upsampler_level_1 = Hyperparams(
 )
 HPARAMS_REGISTRY["custom_upsampler_level_1"] = custom_upsampler_level_1
 
-# Custom Prior (Top-Level Prior)
-custom_prior = Hyperparams(
-    level=2,
-    n_ctx=8192,
-    prior_width=4800,
-    prior_depth=72,
-    heads=8,
-    attn_order=2,
-    blocks=128,
-    init_scale=0.1,
-    c_res=1,
-    beta2=0.925,
-    min_duration=60.0,
-    max_duration=600.0,
-    use_tokens=False,
-    n_tokens=0,
-    prime_loss_fraction=0.0,
-    merged_decoder=True,
-    restore_prior= "/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_2.pth.tar",
-    fp16_params=True,
-)
-HPARAMS_REGISTRY["custom_prior"] = custom_prior
+# # Custom Prior (Top-Level Prior)
+# custom_prior = Hyperparams(
+#     level=2,
+#     n_ctx=8192,
+#     prior_width=4800,
+#     prior_depth=72,
+#     heads=8,
+#     attn_order=2,
+#     blocks=128,
+#     init_scale=0.1,
+#     c_res=1,
+#     beta2=0.925,
+#     min_duration=60.0,
+#     max_duration=600.0,
+#     use_tokens=False,
+#     n_tokens=0,
+#     prime_loss_fraction=0.0,
+#     merged_decoder=True,
+#     restore_prior= "/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_2.pth.tar",
+#     fp16_params=True,
+# )
+# HPARAMS_REGISTRY["custom_prior"] = custom_prior
