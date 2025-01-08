@@ -721,7 +721,7 @@ custom_upsampler_level_0 = Hyperparams(
     use_tokens=False,
     prime_loss_fraction=0.0,
     fp16_params=False,
-    restore_prior= "/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_0.pth.tar",
+    restore_prior="https://genxx.s3.us-east-1.amazonaws.com/small_prior/prior_level_0.pth.tar",
 )
 HPARAMS_REGISTRY["custom_upsampler_level_0"] = custom_upsampler_level_0
 
