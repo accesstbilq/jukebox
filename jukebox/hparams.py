@@ -96,10 +96,18 @@ upsampler_level_0 = Hyperparams(
 upsampler_level_0.update(upsamplers)
 HPARAMS_REGISTRY["upsampler_level_0"] = upsampler_level_0
 
+# upsampler_level_1 = Hyperparams(
+#     level=1,
+#     cond_res_scale=True,
+#     restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_1.pth.tar'
+# )
+# upsampler_level_1.update(upsamplers)
+# HPARAMS_REGISTRY["upsampler_level_1"] = upsampler_level_1
+
 upsampler_level_1 = Hyperparams(
     level=1,
     cond_res_scale=True,
-    restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_1.pth.tar'
+    restore_prior= '/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_1.pth.tar'
 )
 upsampler_level_1.update(upsamplers)
 HPARAMS_REGISTRY["upsampler_level_1"] = upsampler_level_1
@@ -121,11 +129,33 @@ prior_5b = Hyperparams(
     n_tokens=0,
     prime_loss_fraction=0.0,
     merged_decoder=True,
-    restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_2.pth.tar',
+    restore_prior='/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_2.pth.tar',
     fp16_params=True,
 )
 prior_5b.update(labels)
 HPARAMS_REGISTRY["prior_5b"] = prior_5b
+# prior_5b = Hyperparams(
+#     level=2,
+#     n_ctx=8192,
+#     prior_width=4800,
+#     prior_depth=72,
+#     heads=8,
+#     attn_order=2,
+#     blocks=128,
+#     init_scale=0.1,
+#     c_res=1,
+#     beta2=0.925,
+#     min_duration=60.0,
+#     max_duration=600.0,
+#     use_tokens=False,
+#     n_tokens=0,
+#     prime_loss_fraction=0.0,
+#     merged_decoder=True,
+#     restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_2.pth.tar',
+#     fp16_params=True,
+# )
+# prior_5b.update(labels)
+# HPARAMS_REGISTRY["prior_5b"] = prior_5b
 
 
 prior_5b_lyrics = Hyperparams(
