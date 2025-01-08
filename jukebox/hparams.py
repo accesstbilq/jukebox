@@ -85,9 +85,13 @@ upsamplers = Hyperparams(
 )
 upsamplers.update(labels)
 
+# upsampler_level_0 = Hyperparams(
+#     level=0,
+#     restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_0.pth.tar'
+# )
 upsampler_level_0 = Hyperparams(
     level=0,
-    restore_prior=REMOTE_PREFIX + 'jukebox/models/5b/prior_level_0.pth.tar'
+    restore_prior='/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_0.pth.tar'
 )
 upsampler_level_0.update(upsamplers)
 HPARAMS_REGISTRY["upsampler_level_0"] = upsampler_level_0
