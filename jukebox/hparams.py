@@ -134,6 +134,39 @@ prior_5b = Hyperparams(
 )
 prior_5b.update(labels)
 HPARAMS_REGISTRY["prior_5b"] = prior_5b
+
+
+priorz_5b_lyrics = Hyperparams(
+    level=2,
+    n_ctx=8192,
+    prior_width=4800,
+    prior_depth=79,
+    heads=8,
+    attn_order=10,
+    blocks=128,
+    init_scale=0.1,
+    c_res=1,
+    prime_width=1280,
+    prime_depth=18,
+    prime_heads=4,
+    prime_attn_order=2,
+    prime_blocks=32,
+    prime_init_scale=0.7,
+    prime_c_res=1,
+    min_duration=23.8,
+    max_duration=600.0,
+    use_tokens=True,
+    n_tokens=512,
+    prime_loss_fraction=0.4,
+    merged_decoder=True,
+    restore_prior='/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_2.pth.tar',
+    fp16_params=True,
+    alignment_layer=68,
+    alignment_head=2,
+)
+priorz_5b_lyrics.update(labels)
+HPARAMS_REGISTRY["priorz_5b_lyrics"] = priorz_5b_lyrics
+
 # prior_5b = Hyperparams(
 #     level=2,
 #     n_ctx=8192,
