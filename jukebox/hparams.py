@@ -312,13 +312,13 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 # custom_prior.update(small_prior)
 # HPARAMS_REGISTRY["custom_prior"] = custom_prior
 
-# custom_top_prior = Hyperparams(
-#     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",  # Default top-level prior
-#     level=1,  # Top level
-#     labels=False,
-# )
-# custom_top_prior.update(small_prior)
-# HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
+custom_top_prior = Hyperparams(
+    restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",  # Default top-level prior
+    level=1,  # Top level
+    labels=False,
+)
+custom_top_prior.update(small_prior)
+HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
 
 
 
@@ -844,30 +844,30 @@ HPARAMS_REGISTRY["custom_upsampler_level_0"] = custom_upsampler_level_0
 # )
 # HPARAMS_REGISTRY["custom_prior"] = custom_prior
 
-custom_prior = Hyperparams(
-    level=2,
-    y_bins=(10, 100),
-    t_bins=64,
-    n_ctx=8192,
-    prior_width=4800,
-    prior_depth=72,
-    heads=8,
-    attn_order=2,
-    blocks=128,
-    init_scale=0.1,
-    c_res=1,
-    beta2=0.925,
-    min_duration=60.0,
-    max_duration=600.0,
-    use_tokens=False,
-    n_vocab=79,  # Add valid n_vocab
-    n_tokens=512,  # Add valid n_tokens
-    prime_loss_fraction=0.0,
-    merged_decoder=True,
-    restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_2.pth.tar",
-    fp16_params=True,
-)
-HPARAMS_REGISTRY["custom_prior"] = custom_prior
+# custom_prior = Hyperparams(
+#     level=2,
+#     y_bins=(10, 100),
+#     t_bins=64,
+#     n_ctx=8192,
+#     prior_width=4800,
+#     prior_depth=72,
+#     heads=8,
+#     attn_order=2,
+#     blocks=128,
+#     init_scale=0.1,
+#     c_res=1,
+#     beta2=0.925,
+#     min_duration=60.0,
+#     max_duration=600.0,
+#     use_tokens=False,
+#     n_vocab=79,  # Add valid n_vocab
+#     n_tokens=512,  # Add valid n_tokens
+#     prime_loss_fraction=0.0,
+#     merged_decoder=True,
+#     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/prior_level_2.pth.tar",
+#     fp16_params=True,
+# )
+# HPARAMS_REGISTRY["custom_prior"] = custom_prior
 
 
 
