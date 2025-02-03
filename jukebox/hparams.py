@@ -283,18 +283,35 @@ HPARAMS_REGISTRY["small_vqvae"] = small_vqvae
 # custom_vqvae.update(small_vqvae)
 # HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
 
+# OLD ONE
+# small_prior = Hyperparams(
+#     n_ctx=8192,
+#     prior_width=1024,
+#     prior_depth=48,
+#     heads=1,
+#     c_res=1,
+#     attn_order=2,
+#     blocks=64,
+#     init_scale=0.7,
+# )
+# HPARAMS_REGISTRY["small_prior"] = small_prior
+
 
 small_prior = Hyperparams(
-    n_ctx=8192,
-    prior_width=1024,
-    prior_depth=48,
-    heads=1,
+    level=1,  # Ensure level is correct (previously set as 2)
+    n_ctx=8192,  # Ensure this matches training
+    prior_width=1024,  # Ensure same width
+    prior_depth=48,  # Ensure same depth
+    heads=1,  # Ensure same number of heads
     c_res=1,
     attn_order=2,
-    blocks=64,
+    blocks=64,  # Ensure number of blocks matches
     init_scale=0.7,
+    use_tokens=False,
+    restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
 )
 HPARAMS_REGISTRY["small_prior"] = small_prior
+
 
 # custom_prior = Hyperparams(
 #     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
