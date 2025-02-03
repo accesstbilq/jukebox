@@ -322,9 +322,9 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 
 custom_top_prior = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
-    level=2,  # Make sure this matches the prior you are using
+    level=1,  # Match trained prior level (was incorrectly set to level=2)
     prior_width=1024,  # Match checkpoint dimensions
-    prior_depth=72,  # Adjust depth if needed
+    prior_depth=72,
     heads=8,
     attn_order=2,
     blocks=128,
@@ -332,8 +332,8 @@ custom_top_prior = Hyperparams(
     use_tokens=False,
     labels=False,
 )
-
 HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
+    
 
 
 small_labelled_prior = Hyperparams(
@@ -737,25 +737,44 @@ REMOTE_PREFIX = "https://genxx.s3.us-east-1.amazonaws.com/"
 #     restore_vqvae="/content/gdrive/MyDrive/Jukebox_Checkpoints/vqvae.pth.tar",
 #     fp16=True,  # Match checkpoint
 # )
+# custom_vqvae = Hyperparams(
+#     levels = 3,
+#     downs_t = (3, 2, 2),
+#     strides_t = (2, 2, 2),
+#     emb_width = 64,
+#     l_bins = 2048,
+#     l_mu = 0.99,
+#     commit = 0.02,
+#     spectral = 0.0,
+#     multispectral = 1.0,
+#     hvqvae_multipliers = (2, 1, 1),
+#     loss_fn = 'lmix',
+#     lmix_l2 = 1.0,
+#     lmix_linf=0.02,
+#     width = 32,
+#     depth = 4,
+#     m_conv = 1.0,
+#     dilation_growth_rate = 3,
+#     restore_vqvae='/content/gdrive/MyDrive/Jukebox_Checkpoints/vqvae.pth.tar',
+# )
+# HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
+
 custom_vqvae = Hyperparams(
-    levels = 3,
-    downs_t = (3, 2, 2),
-    strides_t = (2, 2, 2),
-    emb_width = 64,
-    l_bins = 2048,
-    l_mu = 0.99,
-    commit = 0.02,
-    spectral = 0.0,
-    multispectral = 1.0,
-    hvqvae_multipliers = (2, 1, 1),
-    loss_fn = 'lmix',
-    lmix_l2 = 1.0,
-    lmix_linf=0.02,
-    width = 32,
-    depth = 4,
-    m_conv = 1.0,
-    dilation_growth_rate = 3,
-    restore_vqvae='/content/gdrive/MyDrive/Jukebox_Checkpoints/vqvae.pth.tar',
+    levels=2,  # Match training setup
+    downs_t=(5, 3),  # Match small_vqvae
+    strides_t=(2, 2),  # Match small_vqvae
+    emb_width=64,  # Match small_vqvae
+    l_bins=1024,  # Match small_vqvae
+    l_mu=0.99,
+    commit=0.02,
+    spectral=0.0,
+    multispectral=1.0,
+    loss_fn="l2",
+    width=32,
+    depth=4,
+    m_conv=1.0,
+    dilation_growth_rate=3,
+    restore_vqvae="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_vqvae_checkpoint.pth.tar",
 )
 HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
 
