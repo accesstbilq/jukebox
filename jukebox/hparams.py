@@ -308,9 +308,11 @@ small_prior = Hyperparams(
     blocks=64,
     init_scale=0.7,
     use_tokens=False,
-    y_bins=(10, 100),  
+    min_duration=5.0,  # ✅ Ensure this is a valid number
+    max_duration=600.0,  # ✅ Ensure this is a valid number
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
 )
+
 HPARAMS_REGISTRY["small_prior"] = small_prior
 
 
