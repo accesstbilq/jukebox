@@ -312,14 +312,28 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 # custom_prior.update(small_prior)
 # HPARAMS_REGISTRY["custom_prior"] = custom_prior
 
+# custom_top_prior = Hyperparams(
+#     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",  # Default top-level prior
+#     level=1,  # Top level
+#     labels=False,
+# )
+# custom_top_prior.update(small_prior)
+# HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
+
 custom_top_prior = Hyperparams(
-    restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",  # Default top-level prior
-    level=1,  # Top level
+    restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
+    level=2,  # Make sure this matches the prior you are using
+    prior_width=1024,  # Match checkpoint dimensions
+    prior_depth=72,  # Adjust depth if needed
+    heads=8,
+    attn_order=2,
+    blocks=128,
+    init_scale=0.1,
+    use_tokens=False,
     labels=False,
 )
-custom_top_prior.update(small_prior)
-HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
 
+HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
 
 
 small_labelled_prior = Hyperparams(
