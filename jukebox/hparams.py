@@ -298,16 +298,17 @@ HPARAMS_REGISTRY["small_vqvae"] = small_vqvae
 
 
 small_prior = Hyperparams(
-    level=1,  # Ensure level is correct (previously set as 2)
-    n_ctx=8192,  # Ensure this matches training
-    prior_width=1024,  # Ensure same width
-    prior_depth=48,  # Ensure same depth
-    heads=1,  # Ensure same number of heads
+    level=1,
+    n_ctx=8192,
+    prior_width=1024,
+    prior_depth=48,
+    heads=1,
     c_res=1,
     attn_order=2,
-    blocks=64,  # Ensure number of blocks matches
+    blocks=64,
     init_scale=0.7,
     use_tokens=False,
+    y_bins=(10, 100),  
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
 )
 HPARAMS_REGISTRY["small_prior"] = small_prior
