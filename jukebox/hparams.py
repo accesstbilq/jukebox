@@ -370,7 +370,7 @@ custom_top_prior = Hyperparams(
     max_duration=600.0,  # Ensure valid duration
     y_bins=(10, 100),  # ✅ Fix: Must be a tuple
 )
-
+HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
 
 
 small_labelled_prior = Hyperparams(
