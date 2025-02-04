@@ -786,22 +786,10 @@ REMOTE_PREFIX = "https://genxx.s3.us-east-1.amazonaws.com/"
 # HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
 
 custom_vqvae = Hyperparams(
-    levels=2,  # Match training setup
-    downs_t=(5, 3),  # Match small_vqvae
-    strides_t=(2, 2),  # Match small_vqvae
-    emb_width=64,  # Match small_vqvae
-    l_bins=1024,  # Match small_vqvae
-    l_mu=0.99,
-    commit=0.02,
-    spectral=0.0,
-    multispectral=1.0,
-    loss_fn="l2",
-    width=32,
-    depth=4,
-    m_conv=1.0,
-    dilation_growth_rate=3,
+    levels=2,  # Ensure this matches the trained model
     restore_vqvae="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_vqvae_checkpoint.pth.tar",
 )
+custom_vqvae.update(small_vqvae)
 HPARAMS_REGISTRY["custom_vqvae"] = custom_vqvae
 
 
