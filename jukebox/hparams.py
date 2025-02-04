@@ -308,9 +308,10 @@ small_prior = Hyperparams(
     blocks=64,
     init_scale=0.7,
     use_tokens=False,
-    min_duration=5.0,  # ✅ Ensure this is a valid number
-    max_duration=600.0,  # ✅ Ensure this is a valid number
+    min_duration=5.0,  # Ensure this is a valid number
+    max_duration=600.0,  # Ensure this is a valid number
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
+    y_bins=(10, 100),  # ✅ Fix: Set (genre_bins, artist_bins)
 )
 
 HPARAMS_REGISTRY["small_prior"] = small_prior
@@ -340,20 +341,36 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 # custom_top_prior.update(small_prior)
 # HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
 
+# custom_top_prior = Hyperparams(
+#     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
+#     level=1,  # Match trained prior level (was incorrectly set to level=2)
+#     prior_width=1024,  # Match checkpoint dimensions
+#     prior_depth=72,
+#     heads=8,
+#     attn_order=2,
+#     blocks=128,
+#     init_scale=0.1,
+#     use_tokens=False,
+#     labels=False,
+# )
+# HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
+
 custom_top_prior = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
-    level=1,  # Match trained prior level (was incorrectly set to level=2)
+    level=2,  # Ensure this matches the prior you are using
     prior_width=1024,  # Match checkpoint dimensions
-    prior_depth=72,
+    prior_depth=72,  # Adjust depth if needed
     heads=8,
     attn_order=2,
     blocks=128,
     init_scale=0.1,
     use_tokens=False,
     labels=False,
+    min_duration=5.0,  # Ensure valid duration
+    max_duration=600.0,  # Ensure valid duration
+    y_bins=(10, 100),  # ✅ Fix: Must be a tuple
 )
-HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
-    
+
 
 
 small_labelled_prior = Hyperparams(
