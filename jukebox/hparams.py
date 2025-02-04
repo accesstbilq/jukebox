@@ -355,22 +355,12 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 # )
 # HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
 
-custom_top_prior = Hyperparams(
+custom_prior = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
-    level=2,  # Ensure this matches the prior you are using
-    prior_width=1024,  # Match checkpoint dimensions
-    prior_depth=72,  # Adjust depth if needed
-    heads=8,
-    attn_order=2,
-    blocks=128,
-    init_scale=0.1,
-    use_tokens=False,
+    level=1,  # Adjust this to match your setup
     labels=False,
-    min_duration=5.0,  # Ensure valid duration
-    max_duration=600.0,  # Ensure valid duration
-    y_bins=(10, 100),  # ✅ Fix: Must be a tuple
 )
-HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
+HPARAMS_REGISTRY["custom_prior"] = custom_prior
 
 
 small_labelled_prior = Hyperparams(
@@ -462,10 +452,9 @@ HPARAMS_REGISTRY["small_upsampler"] = small_upsampler
 
 custom_upsampler = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_upsampler_checkpoint.pth.tar",
-    level=0,
+    level=0,  # Ensure this is correct
     labels=False,
 )
-custom_upsampler.update(small_upsampler)
 HPARAMS_REGISTRY["custom_upsampler"] = custom_upsampler
 
 all_fp16 = Hyperparams(
