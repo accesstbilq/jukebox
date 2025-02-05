@@ -355,12 +355,27 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 # )
 # HPARAMS_REGISTRY["custom_prior"] = custom_top_prior
 
+# custom_prior = Hyperparams(
+#     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
+#     level=1,  # Adjust this to match your setup
+#     labels=False,
+# )
+# HPARAMS_REGISTRY["custom_prior"] = custom_prior
+
 custom_prior = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
-    level=1,  # Adjust this to match your setup
+    level=1,  # Ensure this matches the actual model level used during training
+    prior_width=1920,  # This should match the width in your checkpoint
+    prior_depth=72,   # This should match the depth in your checkpoint
+    heads=8,  # Match the heads count
+    attn_order=2,
+    blocks=128,  # Number of transformer blocks
+    init_scale=0.1,
+    use_tokens=False,
     labels=False,
 )
 HPARAMS_REGISTRY["custom_prior"] = custom_prior
+
 
 
 small_labelled_prior = Hyperparams(
