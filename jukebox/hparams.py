@@ -364,13 +364,17 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 
 custom_prior = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
-    level=1,  # Assuming level 1 is correct for your use case
+    level=1,
     prior_width=1024,
-    blocks=50,  # Number of transformer blocks
-    y_bins=(120, 4111),  # Example: 120 genres, 4111 artists
-    # Add other necessary parameters
+    blocks=50,  # Adjusted based on actual number from your model
+    y_bins=(120, 4111),  # Example placeholder values
+    sr=44100,  # Sample rate, set to your model's requirement
+    min_duration=5.0,  # Minimum duration in seconds; adjust as needed
+    max_duration=30.0,  # Maximum duration in seconds; adjust as needed
+    # You may need to specify additional parameters depending on the model's needs
 )
 HPARAMS_REGISTRY["custom_prior"] = custom_prior
+
 
 
 
