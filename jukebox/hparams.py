@@ -364,12 +364,14 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 
 custom_prior = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
-    level=1,  # This should match the hierarchy level for the model
-    prior_width=1024,  # Width from the embedding and positional embedding layers
-    blocks=50,  # This should correspond to the number of transformer blocks you observed
-    # Ensure other necessary parameters are included based on model requirements
+    level=1,  # Assuming level 1 is correct for your use case
+    prior_width=1024,
+    blocks=50,  # Number of transformer blocks
+    y_bins=(120, 4111),  # Example: 120 genres, 4111 artists
+    # Add other necessary parameters
 )
 HPARAMS_REGISTRY["custom_prior"] = custom_prior
+
 
 
 
