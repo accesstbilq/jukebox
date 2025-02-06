@@ -364,13 +364,13 @@ HPARAMS_REGISTRY["small_prior"] = small_prior
 
 custom_prior = Hyperparams(
     restore_prior="/content/gdrive/MyDrive/Jukebox_Checkpoints/small_prior_checkpoint.pth.tar",
-    level=1,  # Adjust this level based on where this prior fits in your model hierarchy
+    level=1,  # This should match the hierarchy level for the model
     prior_width=1024,  # Width from the embedding and positional embedding layers
-    blocks=50,  # Assuming there are 50 blocks based on the logs
-    attn_layers=50,  # Assuming each block contains one attention layer
-    # Additional parameters based on your model's specifics might be needed
+    blocks=50,  # This should correspond to the number of transformer blocks you observed
+    # Ensure other necessary parameters are included based on model requirements
 )
 HPARAMS_REGISTRY["custom_prior"] = custom_prior
+
 
 
 
